@@ -94,6 +94,8 @@ Add proper sha256 secrets and better API Gateway rules.
 
 Any additional required error checking should be added.
 
+Get username from user_id and include in message.txt.
+
 Set up my program in an app of some sort that allows users to subscribe for text and/or email updates without having to go through the entire process described above!
 
 ## Useful Links
