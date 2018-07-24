@@ -1,0 +1,47 @@
+{
+  "Email": {
+    "Source": "need me",
+    "Destination": {
+        "ToAddresses": [
+            "need me"
+        ],
+        "CcAddresses": [
+        ],
+        "BccAddresses": [
+        ]
+    },
+    "Message": {
+        "Subject": {
+            "Data": "Twitch Alert!",
+            "Charset": "UTF-8"
+        },
+        "Body": {
+            "Text": {
+                "Data": "will be read from a file",
+                "Charset": "UTF-8"
+            },
+            "Html": {
+                "Data": "html data",
+                "Charset": "UTF-8"
+            }
+        }
+    },
+    "ReplyToAddresses": [
+    ],
+    "ReturnPath": "",
+    "SourceArn": "",
+    "ReturnPathArn": "",
+    "Tags": [
+        {
+        }
+    ],
+    "ConfigurationSetName": ""
+  },
+  "Twilio-SMS": {
+    "acc_sid": "need me",
+    "auth_token": "need me",
+    "from_num": "need me",
+    "text_filename": "message.txt",
+    "to_num": "need me"
+  }
+}
