@@ -112,6 +112,10 @@ Set up my program in an app of some sort that allows users to subscribe for text
 
 ## Random Notes
 
+[Postman](https://www.getpostman.com/) is a good way to test your API Gateway with GET/POST to see if everything is behaving as expected. Take care in matching Twitch API's response exactly, easy to mess it up.
+
+query string parameters: link?param1=value&param2=value...
+
 The event object in AWS Lambda will contain the data you want to parse, the context object doesn't really communicate too much with the outside world and only reports on the state of the program, so don't worry too much about the context variable.
 
 Using print statements will log that data to CloudWatch under the lambda function.
