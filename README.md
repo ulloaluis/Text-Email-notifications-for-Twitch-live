@@ -95,6 +95,7 @@ Add proper sha256 secrets and better API Gateway rules.
 Any additional required error checking should be added.
 
 ~~Get username from user_id and include in message.txt.~~
+
 ![username: crimsonmhp](https://raw.githubusercontent.com/ulloaluis/Text-Email-notifications-for-Twitch-live/master/samples/Screen%20Shot%202018-07-26%20at%202.25.33%20PM.png)
 
 *Could change time displayed to be in user-specified time-zone, if made into an app, will add that functionality.
