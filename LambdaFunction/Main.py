@@ -9,17 +9,22 @@ def response(message, code):
         'headers': {'Content-Type': 'application/json'},
         'body': message
     }
-
-# "thumbnail_url":"...live_user_<username>-{width}x{height}.jpg"
 def parse_name(body):
+    """ 
+        input: text to be parsed
+            input-format: "thumbnail_url":"...live_user_<username>-{width}x{height}.jpg"
+    """
     return body['data'][0]['thumbnail_url'].split("user_")[1].split("-{width}")[0]
 
-# Callback handler that receives either 1) a challenge for verifying
-# a webhook subsciption or 2) a notification payload with details about
-# a streamer going on/off-line, in which case we write to message.txt and
-# then send a text and email
-# *print function is used for cloud watch logging*
 def lambda_handler(event, context):
+    """
+        Callback handler that receives either 
+        1) a challenge for verifying a webhook subsciption or 
+        2) a notification payload with details about a streamer
+            going on/off-line, in which case we write to message.txt
+            and then send a text and email
+        *print function is used for cloud watch logging*
+    """
     print(event)
     if event.get('queryStringParameters') and event['queryStringParameters'].get('hub.challenge'): # must not be None
         print(event['queryStringParameters']['hub.challenge'])
