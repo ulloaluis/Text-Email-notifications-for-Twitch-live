@@ -4,6 +4,9 @@ import json
 import os
 
 def response(message, code):
+    """
+    inputs: message and code to be included in response to server
+    """
     return {
         'statusCode': code,
         'headers': {'Content-Type': 'application/json'},
@@ -11,19 +14,19 @@ def response(message, code):
     }
 def parse_name(body):
     """ 
-        input: text to be parsed
-            input-format: "thumbnail_url":"...live_user_<username>-{width}x{height}.jpg"
+    input: text to be parsed
+        formatting: "thumbnail_url":"...live_user_<username>-{width}x{height}.jpg"
     """
     return body['data'][0]['thumbnail_url'].split("user_")[1].split("-{width}")[0]
 
 def lambda_handler(event, context):
     """
-        Callback handler that receives either 
-        1) a challenge for verifying a webhook subsciption or 
-        2) a notification payload with details about a streamer
-            going on/off-line, in which case we write to message.txt
-            and then send a text and email
-        *print function is used for cloud watch logging*
+    Callback handler that receives either 
+    1) a challenge for verifying a webhook subsciption or 
+    2) a notification payload with details about a streamer
+        going on/off-line, in which case we write to message.txt
+        and then send a text and email
+    *print function is used for cloud watch logging*
     """
     print(event)
     if event.get('queryStringParameters') and event['queryStringParameters'].get('hub.challenge'): # must not be None
