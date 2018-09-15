@@ -44,7 +44,9 @@ One file can be run from your local computer, but the rest will be on AWS Lambda
       This will zip the contents of the folder into alerts.zip.
 
 5) Create a new AWS Lambda function and an API Gateway
+    
     5a) If you don't care too much about security right now and just want to get a working version, make your rules as permissive as possible.
+    
     5b) Once again, it's possible to make your API Gateway as permissive as possible. If you decide to add rules, make sure you can accept GET and POST notifications, since Twitch API will utilize both of those. The callback url would be the invoke url on the API Gateway. (The API Gateway is added as a trigger under the lambda function.)
 
 6) Upload the code as a zip file, you will probably get "file too large, but can still call function" notification, which is fine. However, if you have to change your code, you will have to re-zip and re-upload the file (there's probably a much better way to do this, but I've been doing it that way).
@@ -71,8 +73,8 @@ Account SID and authorization token can be found on the Twilio website after you
 
 [Use the boto3 docs, under the send_email function](https://boto3.readthedocs.io/en/latest/reference/services/ses.html#SES.Client.send_email). Note that if you decide to add more parameters than those given, you CANNOT include an empty parameter, like an empty list. The documentation does this and it is wrong and misleading; your code will not work. (It is fine for that part to be empty in the json file, just don't include it as a parameter)
 
-## TwitchAPIStreaming.py setup
-You will have to supply a user_id, callback url, client_id, duration time, and secret (secret will default to None).
+## TwitchAPIStreaming.py
+Interactive terminal will allow you to subscribe to a user for up to 10 days (may increase in future). Note that you will have had to have uploaded the lambda and configured the constants file that stores your API Gateway url and Client-ID! 
 
 ### user_id
 This is the user_id of the person you are subscribing to for stream-is-live updates. I think the best way to get the user_id is to use [this chrome browser extension](https://chrome.google.com/webstore/detail/twitch-username-and-user/laonpoebfalkjijglbjbnkfndibbcoon), in which you just put in a twitch username and it returns the user_id, or vice versa.
@@ -90,6 +92,9 @@ Subscriptions are not indefinite. The max time is 864000, which is 10 days. Afte
 This is used as verification. I haven't done anything with this yet, bit will be implementing it later on. It's highly recommended that you use secrets; it's used to verify that you're not getting sent bogus data from a random source!
 
 ## Things to do
+
+~~Interactive terminal program to subscribe quickly and without difficulty.~~
+
 Add proper sha256 secrets and better API Gateway rules.
 
 Any additional required error checking should be added.
